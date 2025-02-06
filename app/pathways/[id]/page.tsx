@@ -32,6 +32,7 @@ export default function CareerDetailsPage() {
     const { id } = useParams();
     const career = careerDetails[id as keyof typeof careerDetails];
 
+    const [activeView, setActiveView] = useState("dashboard"); // Track active view
     const [acquiredSkills, setAcquiredSkills] = useState<string[]>([]);
     const [completedTasks, setCompletedTasks] = useState<string[]>([]);
 
@@ -43,7 +44,7 @@ export default function CareerDetailsPage() {
 
     return (
         <div>
-            <Navbar />
+            <Navbar setActiveView={setActiveView} activeView={activeView} />
             <div className="p-6 max-w-3xl mx-auto pt-20">
                 <h1 className="text-3xl font-bold flex items-center space-x-2">
                     <ClipboardList className="w-6 h-6 text-blue-500" />
