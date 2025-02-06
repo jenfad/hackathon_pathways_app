@@ -43,8 +43,8 @@ const SkillsAssessment = () => {
     'E-commerce', 'Other'
   ];
 
-  const handleFileUpload = async (event) => {
-    const file = event.target.files[0];
+  const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0]; // Use optional chaining to prevent potential errors
     if (!file) return;
 
     setIsUploading(true);
