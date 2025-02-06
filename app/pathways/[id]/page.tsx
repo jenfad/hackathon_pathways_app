@@ -59,7 +59,7 @@ export default function CareerDetailsPage() {
                 </p>
 
                 <div className="mt-6 p-4 border rounded-lg bg-gray-100">
-                    <h2 className="text-lg font-semibold">Why You'd Be a Good Fit</h2>
+                    <h2 className="text-lg font-semibold">Why You Would Be a Good Fit</h2>
                     <p className="text-gray-700">{career.fitDescription}</p>
                 </div>
 
