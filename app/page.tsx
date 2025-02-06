@@ -1,12 +1,23 @@
+"use client";
+
+import { useState } from "react";
 import SkillsAssessment from './components/SkillsAssessment';
 import Dashboard from './components/Dashboard';
+import Pathways from "./components/Pathways";
+import Navbar from "./components/Navbar";
 
 export default function Home() {
-  return (
-    <main>
-      <Dashboard />
-      <SkillsAssessment />
-    </main>
+    const [activeView, setActiveView] = useState("dashboard");
+
+    return (
+        <div className="pt-20">
+            <Navbar setActiveView={setActiveView} activeView={activeView} />
+            <div className="p-6">
+                {activeView === "dashboard" && <Dashboard />}
+                {activeView === "skills" && <SkillsAssessment />}
+                {activeView === "pathways" && <Pathways />}
+            </div>
+        </div>
   );
 }
 
