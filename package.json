@@ -9,11 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@radix-ui/react-select": "^2.1.6",
     "lucide-react": "^0.474.0",
-    "next": "15.1.6",
+    "next": "^15.1.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "recharts": "^2.15.1"
+    "recharts": "^2.15.1",
+    "shadcn-ui": "^0.8.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

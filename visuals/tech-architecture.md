@@ -1,36 +1,52 @@
 ```mermaid
 graph TD
     subgraph "Frontend Layer"
-        A[Web Application]
-        B[Mobile App]
-        C[Admin Dashboard]
+        A[Web Application]:::frontend
+        B[Mobile App]:::frontend
     end
 
     subgraph "API Layer"
-        D[API Gateway]
-        E[Authentication Service]
-        F[Document Processing API]
+        C[API Gateway]:::api
+        D[Authentication Service]:::service
+        E[Document Processing API]:::service
     end
 
     subgraph "Core Services"
-        H[Skills Assessment Engine]
-        I[Job Matching Algorithm]
-        K[Credential Analysis]
+        F[Credential Extraction & Translation]:::process
+        G[Job Matching]:::process
     end
 
     subgraph "Data Layer"
-        M[(Job Database)]
-        N[(Skills Database)]
-        O[(Document Store)]
+        H[(Skills Database)]:::data
+        I[(Document Store)]:::data
+        J[(Job Database)]:::data
     end
 
     subgraph "External Integrations"
-        Q[Employment Databases]
-        R[Language Learning Platforms]
+        K[Partnership Programs]:::external
     end
 
-    A & B & C --> D
-    D --> E & F
-    E & F --> H & I & K
-    H & I & K --> M & N & O
-    H & I --> Q & R
+    %% Frontend Layer interacting with API Layer
+    A & B --> C
+    C --> D & E
+
+    %% API Layer interacting with Core Services
+    D & E --> F & G
+
+    %% Core Services interacting with Data Layer
+    F --> H & I
+    G --> H & I & J
+
+    %% Core Services interacting with External Integrations
+    G --> K
+
+    %% F is an input for G (position adjustment for clarity)
+    F -.-> G
+
+    %% Define styles for each class with muted colors
+    classDef frontend fill:#7fa6c1,stroke:#6f8fbd,color:white;
+    classDef api fill:#f2c94c,stroke:#e1ad2d,color:white;
+    classDef service fill:#a1c9a5,stroke:#86b67d,color:white;
+    classDef process fill:#5fae6e,stroke:#4b8c4b,color:white;
+    classDef data fill:#b58bd1,stroke:#9a73a3,color:white;
+    classDef external fill:#e77471,stroke:#e25d4f,color:white;

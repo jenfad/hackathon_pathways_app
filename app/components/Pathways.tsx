@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Briefcase, Code, ShieldCheck } from "lucide-react";
+import { Briefcase, Code, ShieldCheck, Star } from "lucide-react";  // Import the Star icon
 
 const careerPathways = [
     {
@@ -32,7 +32,7 @@ const careerPathways = [
         fitScore: 68,
         icon: <ShieldCheck className="w-6 h-6 text-red-500" />,
     },
-].sort((a, b) => b.fitScore - a.fitScore);;
+].sort((a, b) => b.fitScore - a.fitScore);
 
 export default function Pathways() {
     const [selectedPathways, setSelectedPathways] = useState<string[]>([]);
@@ -63,7 +63,15 @@ export default function Pathways() {
                     >
                         <div>{career.icon}</div>
                         <div className="flex-1">
-                            <h2 className="text-lg font-semibold">{career.title}</h2>
+                            <h2 className="text-lg font-semibold flex items-center">
+                                {career.title}
+                                {career.id === "data-product-manager" && (
+                                    <span className="ml-2 text-yellow-400">
+                                        <Star className="w-4 h-4 inline" />
+                                        <span className="ml-1">Partnership Employer</span>
+                                    </span>
+                                )}
+                            </h2>
                             <p className="text-sm text-gray-600 mt-1">
                                 Suggested Degrees: {career.degrees.join(", ")}
                             </p>
